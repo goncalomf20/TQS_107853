@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: com.example.demo.C_CarControllerTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 11.67 s <<< FAILURE! -- in com.example.demo.C_CarControllerTest
+com.example.demo.C_CarControllerTest.whenPostCar_thenCreateCar -- Time elapsed: 1.375 s <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$.name"
+	at org.springframework.test.util.JsonPathExpectationsHelper.evaluateJsonPath(JsonPathExpectationsHelper.java:302)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:73)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers.lambda$value$0(JsonPathResultMatchers.java:87)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:214)
+	at com.example.demo.C_CarControllerTest.whenPostCar_thenCreateCar(C_CarControllerTest.java:49)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: com.jayway.jsonpath.PathNotFoundException: No results for path: $['name']
+
