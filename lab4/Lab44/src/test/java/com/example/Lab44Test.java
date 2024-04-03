@@ -19,4 +19,4 @@ class DockerChromeTest {
         assertThat(driver.getTitle()).contains("Selenium WebDriver");
     }
 
-}
+}   
