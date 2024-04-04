@@ -33,7 +33,6 @@ public class PublicRestServicesTest {
         given().when().get(url).then().assertThat().body("id",hasItems(198,199));
     }   
 
-    @Disabled
     @Test
     void test4() {
         String url = "https://jsonplaceholder.typicode.com/todos";
@@ -41,7 +40,7 @@ public class PublicRestServicesTest {
             .when()
             .get(url)
             .then()
-            //.time(lessThan(2), TimeUnit.SECONDS)  //esta função não funciona, mas é a única que encontrei para realizar esta tarefa
+            .time(lessThan(2000L))
             .statusCode(200)
             .body("id", hasItems(198, 199));
     }
