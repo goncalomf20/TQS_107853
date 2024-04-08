@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Details</title>
+</head>
+<body>
+    <div id="ticket-details">
+        <h1>Ticket Details</h1>
+        <p id="ticket-info"></p>
+        <button onclick="goToMainPage()">Go to Main Page</button>
+    </div>
+
+    <script>
+        // Function to extract trip ID from URL
+        function getTicketIdFromUrl() {
+            // Get the current URL
+            var url = window.location.href;
+            // Split the URL by '?' to separate the base URL from the query parameters
+            var parts = url.split('?');
+            // If the URL has query parameters
+            if (parts.length > 1) {
+                // Get the query string containing ticketToken=T-981113
+                var queryString = parts[1];
+                // Split the query string by '&' to separate individual parameters
+                var params = queryString.split('&');
+                // Loop through each parameter
+                for (var i = 0; i < params.length; i++) {
+                    // Split each parameter by '=' to separate key and value
+                    var paramParts = params[i].split('=');
+                    // If the key is 'ticketToken'
+                    if (paramParts[0] === 'ticketToken') {
+                        // Return the value (ticket ID)
+                        console.log('Ticket ID:', paramParts[1]);
+                        return paramParts[1];
+                    }
+                }
+            }
+            // If ticketToken parameter is not found
+            console.error('Ticket ID not found in URL');
+            return null;
+        }
+
+        // Function to navigate to the main page
+        function goToMainPage() {
+            window.location.href = '/'; // Change '/' to the URL of your main page
+        }
+
+        const tId = getTicketIdFromUrl();
+        fetch('/ticket/getTicketToken/' + tId) // Replace {ticket_id} with the actual ticket ID
+            .then(response => response.json())
+            .then(data => {
+                const ticketInfo = document.getElementById('ticket-info');
+                // Populate HTML with ticket information
+                ticketInfo.innerHTML = `
+                    <strong>Insert Token:</strong> ${data.insertToken}<br>
+                    <strong>ID Number:</strong> ${data.id_Number}<br>
+                    <strong>Address:</strong> ${data.address}<br>
+                    <strong>First Name:</strong> ${data.firstName}<br>
+                    <strong>Last Name:</strong> ${data.lastName}<br>
+                    <strong>Zip Code:</strong> ${data.zipCode}<br>
+                    <strong>Trip ID:</strong> ${data.trip}
+                `;
+            })
+            .catch(error => {
+                console.error('Error fetching ticket details:', error);
+            });
+    </script>
+</body>
+</html>
