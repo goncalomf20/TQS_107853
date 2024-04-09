@@ -36,6 +36,7 @@ public class Trip {
 
     // Constructor
     public Trip() {
+        //empty constructor
     }
 
     // Getters

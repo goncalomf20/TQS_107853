@@ -2,9 +2,7 @@ package com.homework1.homework1.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.homework1.homework1.models.Ticket;
-import com.homework1.homework1.models.Trip;
 import com.homework1.homework1.repository.TicketRepository;
-import com.homework1.homework1.repository.TripRepository;
 
 import java.util.List;
 

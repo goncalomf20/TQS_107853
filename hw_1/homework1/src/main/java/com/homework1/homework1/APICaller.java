@@ -17,20 +17,20 @@ public class APICaller {
 
     private static final Logger logger = LoggerFactory.getLogger(APICaller.class);
 
-    APICaller() throws UnsupportedOperationException {
+    public APICaller() throws UnsupportedOperationException {
         // Call API
     }
 
-    void setCurrencies(Map<String, Object> currencies) {
+    public void setCurrencies(Map<String, Object> currencies) {
         this.currencies = currencies;
     }
 
-    Map<String, Object> getCurrencies() {
+    public Map<String, Object> getCurrencies() {
         return currencies;
     }
     
 
-    void call() throws IOException {
+    public void call() throws IOException {
 
             // Create URL object with the API endpoint
             URL url = new URL("https://api.frankfurter.app/latest");

@@ -43,7 +43,9 @@ public class Ticket {
 
     
     public Ticket() {
+    // Empty constructor
     }
+    
     // Getters
     public String getInsertToken() {
         return insertToken;
